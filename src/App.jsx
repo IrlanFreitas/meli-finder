@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import "./assets/css/_reset.css"
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from './routes/routes'
@@ -10,12 +10,10 @@ export default function App() {
 
   const [search, setSearch] = useState("");
 
-  console.log(search)
-
   return (
     <Router>
-      <Header setSearch={setSearch}/>
-      <Routes />
+      <Header setSearch={setSearch} />
+      <Routes search={search} />
     </Router>
   );
 }

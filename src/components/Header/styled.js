@@ -5,10 +5,11 @@ export const Container = styled.main`
     height: 50px;
     background: yellow;
     display: flex;
+    justify-content: center;
 `;
 
 export const Form = styled.form`
-    width: 100%;
+    width: 65%;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -16,8 +17,8 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-    width: 55%;
-     margin-left: 20px;
+    width: 100%;
+    margin-left: 20px;
     height: 74%;
     padding: 5px;
     padding-left: 15px;
