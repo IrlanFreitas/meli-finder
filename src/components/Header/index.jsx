@@ -1,0 +1,28 @@
+import React, { useState } from 'react'
+import { Container, Form, Input, Button, Icon } from "./styled"
+import logo from "../../assets/img/logo-mercado-livre.png"
+import searchIcon from "../../assets/img/search-preto.png"
+
+const Header = (props) => {
+
+  const [input, setInput] = useState("");
+
+  const search = (event) => {
+    event.preventDefault();
+    props.setSearch(input);
+  }
+
+  return (
+    <Container>
+      <Form>
+        <img width="45px" height="45px" src={logo} alt="Logo Mercado Livre" />
+        <Input type="text" placeholder="Nunca deixe de buscar" onChange={ event => setInput(event.target.value) } />
+        <Button type="submit" onClick={ search }>
+          <Icon src={searchIcon} alt="Logo de Pesquisa" />
+        </Button>
+      </Form>
+    </Container>
+  )
+}
+
+export default Header
