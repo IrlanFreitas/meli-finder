@@ -13,7 +13,7 @@ export const Container = styled.main`
 
 export const List = styled.div`
     width: 65%;
-    margin: 50px 0;
+    margin-bottom: 50px;
     background: white;
     padding: 15px;
     border-radius: 5px;
@@ -21,6 +21,22 @@ export const List = styled.div`
 
 export const BreadCrumb = styled.div`
     width: 65%;
-    background: blue;
-    height: 15px;
+    display: flex;
+    align-items: center;
+    height: 65px;
+    color: gray;
+
+    .item {
+        display: inline-block;
+    }
+
+    & .item:not(:last-child)::after {
+        content: "  >";
+        margin-right: 5px;
+    }
+
+    & .item:last-child {
+        font-weight: bold;
+    }
 `
+
