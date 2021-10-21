@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Container, List, BreadCrumb } from './styled';
+import React from 'react';
+import { Container, List } from './styled';
 import Card from "../../components/Card";
+import useData from '../../hooks/useData';
 
 const Home = ({ search }) => {
 
-  const [data, setData] = useState([]);
+  const data = useData(search, "search")
 
-  useEffect(() => {
-    if (search !== "") {
-      async function fetchData() {
-        await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
-          .then(response => response.json())
-          .then(data => setData(data?.results?.slice(0, 4)));
-      }
+  console.log(data)
 
-      fetchData()
-    }
-
-  }, [search])
-
-  return (
-    <Container>
-      <BreadCrumb /> 
+  return <>
+    {data?.results?.length > 0 && <Container>
       <List>
-        <Card />
+        {data?.results?.slice(0, 4).map(item => <Card item={item} />)}
       </List>
-    </Container>
-  )
+    </Container>}
+  </>
 }
 
 export default Home
