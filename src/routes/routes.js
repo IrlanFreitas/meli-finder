@@ -1,12 +1,11 @@
 import { Route, BrowserRouter as Routers } from "react-router-dom";
 import Home from '../pages/Home'
-import Data from '../pages/Details'
+import Details from '../pages/Details'
 
-const Routes = ({ search }) =>
+const Routes = ({ search, setBreadCrumb, breadCrumb }) =>
     <Routers>
-        <Route path='/'  exact component={() => <Home search={search} />} />
-        {/* <Route path='/details'exact component={() => <Details />} /> */}
-        <Route path='/details/:id'exact component={Data} />
+        <Route path='/' exact component={() => <Home search={search} setBreadCrumb={setBreadCrumb} breadCrumb={breadCrumb} />} />
+        <Route path='/details/:id'exact component={() => <Details breadCrumb={breadCrumb}/>} />
     </Routers>
 
 

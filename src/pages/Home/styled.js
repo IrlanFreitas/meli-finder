@@ -8,7 +8,6 @@ export const Container = styled.main`
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
 `
 
 export const List = styled.div`
@@ -17,6 +16,10 @@ export const List = styled.div`
     background: white;
     padding: 15px;
     border-radius: 5px;
+
+    @media screen and (max-width: 425px) {
+        width: 90%;
+    }
 `
 
 export const BreadCrumb = styled.div`
@@ -25,6 +28,10 @@ export const BreadCrumb = styled.div`
     align-items: center;
     height: 65px;
     color: gray;
+
+    @media screen and (max-width: 425px) {
+        width: 90%;
+    }
 
     .item {
         display: inline-block;

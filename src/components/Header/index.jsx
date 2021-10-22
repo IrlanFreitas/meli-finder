@@ -2,22 +2,28 @@ import React, { useState } from 'react'
 import { Container, Form, Input, Button, Icon } from "./styled"
 import logo from "../../assets/img/logo-mercado-livre.png"
 import searchIcon from "../../assets/img/search-preto.png"
+import { Link, useHistory } from "react-router-dom"
 
-const Header = (props) => {
+const Header = ({ setSearch }) => {
+
+  const history = useHistory();
 
   const [input, setInput] = useState("");
 
   const search = (event) => {
     event.preventDefault();
-    props.setSearch(input);
+    history.push("/")
+    setSearch(input);
   }
 
   return (
     <Container>
-      <Form>
+      <Link to="/">
         <img width="45px" height="45px" src={logo} alt="Logo Mercado Livre" />
-        <Input type="text" placeholder="Nunca deixe de buscar" onChange={ event => setInput(event.target.value) } />
-        <Button type="submit" onClick={ search }>
+      </Link>
+      <Form onSubmit={search}>
+        <Input type="text" name="textFind" placeholder="Nunca deixe de buscar" onChange={event => setInput(event.target.value)} />
+        <Button type="submit" value="search">
           <Icon src={searchIcon} alt="Logo de Pesquisa" />
         </Button>
       </Form>

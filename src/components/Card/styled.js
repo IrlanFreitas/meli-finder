@@ -7,7 +7,8 @@ export const Container = styled(Link)`
     display: flex;
     justify-content: flex-start;
     padding: 15px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    border-bottom: 1px solid lightgray;
 `
 
 export const Image = styled.img`

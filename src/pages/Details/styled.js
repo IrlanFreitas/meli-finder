@@ -12,7 +12,7 @@ export const Container = styled.main`
 
 export const Data = styled.div`
     width: 65%;
-    margin: 50px 0;
+    margin-bottom: 50px;
     background: white;
     padding: 15px;
     border-radius: 5px;
@@ -74,7 +74,7 @@ export const Buy = styled.a`
 `
 
 export const Description = styled.div`
-    width: 80%;
+    width: calc(100% - 27%);
     padding-bottom: 20px;
     padding-left: 20px;
 `

@@ -7,11 +7,12 @@ import Header from './components/Header'
 export default function App() {
 
   const [search, setSearch] = useState("");
+  const [breadCrumb, setBreadCrumb] = useState([]);
 
   return (
     <>
       <Header setSearch={setSearch} />
-      <Routes search={search} />
+      <Routes search={search} setBreadCrumb={setBreadCrumb} breadCrumb={breadCrumb} />
     </>
   );
 }

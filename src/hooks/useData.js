@@ -17,19 +17,25 @@ const useData = (search, type, description = false) => {
 
     useEffect(() => {
 
+        console.log("search", search)
+
         if (search !== "") {
             async function fetchData() {
                 await fetch(`${urls(type)}${search}${description ? "/description" : ""}`)
                     .then(response => response.json())
-                    .then(result => { setData(result) });
+                    .then(result => {
+                        setData(result); 
+                    });
             }
 
             fetchData()
+        } else {
+            setData({})
         }
 
     }, [description, search, type, urls])
 
-    return data
+    return data 
 }
 
 export default useData
