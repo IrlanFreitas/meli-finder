@@ -7,9 +7,6 @@ const Home = ({ search }) => {
 
   const data = useData(search, "search")
 
-  console.log(data)
-  console.log(data?.filters[0]?.values[0])
-
   return <>
     {data?.results?.length > 0 && <Container>
       <BreadCrumb>

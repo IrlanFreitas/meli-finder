@@ -2,7 +2,7 @@ import React from 'react'
 import {
   useParams
 } from "react-router-dom";
-import { Container, Data } from "./styled";
+import * as S from "./styled";
 import useData from '../../hooks/useData';
 
 const Details = () => {
@@ -12,23 +12,23 @@ const Details = () => {
   const data = useData(id, "items")
   const description = useData(id, "items", true)
 
-  // "Deco Reverse" - data.title
-  // "$ 1.98000" - data.price
-  // "Nuevo" - data.condition 
-  // "234 Vendidos" - data.sold_quantity
-  // "Comprar" - data.permalink
-
-  // "Descrições" - items/MLA1109059186/description data.plain_text
-  // "Imagem" -  data.pictures[].url
-
-
-  return <Container>
-    <Data>
-      {data?.title}
-      {description?.plain_text}
-      {/* {part2?.plain_text} */}
-    </Data>
-  </Container>
+  return <S.Container>
+    <S.Data>
+      <S.Details>
+        <S.Image src={data?.pictures[0]?.url} alt="" srcset="" />
+        <S.Info>
+          <S.ConditionAndSold>{data?.condition} - {data?.sold_quantity} vendidos</S.ConditionAndSold>
+          <S.Title>{data?.title}</S.Title>
+          <S.Price>$ {data?.price}</S.Price>
+          <S.Buy href={data?.permalink} target="_blank" rel="noopener noreferrer">Comprar</S.Buy>
+        </S.Info>
+      </S.Details>
+      <S.Description>
+        <S.DescriptionTitle>Descrição do produto</S.DescriptionTitle>
+        <S.DescriptionText>{description?.plain_text}</S.DescriptionText>
+      </S.Description>
+    </S.Data>
+  </S.Container>
 
 
 }
