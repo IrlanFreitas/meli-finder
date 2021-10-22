@@ -17,6 +17,15 @@ export const Image = styled.img`
     border-radius: 5px;
 `
 
+export const Shipping = styled.img`
+    width:25px; 
+    height:25px;
+    margin-left: 10px;
+    background-color: lightgreen;
+    padding: 4px;
+    border-radius: 50%;
+`
+
 export const Data = styled.div`
     width: 60%;
     padding-left: 20px;
