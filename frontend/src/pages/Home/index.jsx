@@ -15,6 +15,8 @@ const Home = ({ search, setBreadCrumb, breadCrumb }) => {
     }
   }, [])
 
+  
+
   return <>
     {data?.results?.length > 0 && <Container>
       <BreadCrumb breadCrumb={breadCrumb} />
