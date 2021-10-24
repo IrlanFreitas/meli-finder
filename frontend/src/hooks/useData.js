@@ -17,8 +17,6 @@ const useData = (search, type, description = false) => {
 
     useEffect(() => {
 
-        console.log("search", search)
-
         if (search !== "") {
             async function fetchData() {
                 await fetch(`${urls(type)}${search}${description ? "/description" : ""}`)
