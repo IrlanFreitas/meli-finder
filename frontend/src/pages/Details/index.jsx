@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   useParams
 } from "react-router-dom";
@@ -6,31 +7,33 @@ import * as S from "./styled";
 import useData from '../../hooks/useData';
 import BreadCrumb from "../../components/BreadCrumb";
 
-const Details = ({ breadCrumb }) => {
-
+const Details = () => {
+  
   const { id } = useParams();
 
-  const data = useData(id, "items")
-  const description = useData(id, "items", true)
+  const product = useSelector((state) => state.products);
+
+
+  useData(id, "items");
 
   return <>
     <S.Container>
 
-      <BreadCrumb breadCrumb={breadCrumb} />
+      <BreadCrumb />
 
       <S.Data>
         <S.Details>
-          <S.Image src={data?.pictures[0]?.url} alt={`Descrição do produto ${data?.title}`} />
+          <S.Image src={product?.pictures[0]?.url} alt={`Descrição do produto ${product?.title}`} />
           <S.Info>
-            <S.ConditionAndSold>{data?.condition} - {data?.sold_quantity} vendidos</S.ConditionAndSold>
-            <S.Title>{data?.title}</S.Title>
-            <S.Price>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(data?.price / 100)}</S.Price>
-            <S.Buy href={data?.permalink} target="_blank" rel="noopener noreferrer">Comprar</S.Buy>
+            <S.ConditionAndSold>{product?.condition} - {product?.sold_quantity} vendidos</S.ConditionAndSold>
+            <S.Title>{product?.title}</S.Title>
+            <S.Price>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(product?.price / 100)}</S.Price>
+            <S.Buy href={product?.permalink} target="_blank" rel="noopener noreferrer">Comprar</S.Buy>
           </S.Info>
         </S.Details>
         <S.Description>
           <S.DescriptionTitle>Descrição do produto</S.DescriptionTitle>
-          <S.DescriptionText>{description?.plain_text}</S.DescriptionText>
+          <S.DescriptionText>{product?.plain_text}</S.DescriptionText>
         </S.Description>
       </S.Data>
     </S.Container>

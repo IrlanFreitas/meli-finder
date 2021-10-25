@@ -1,7 +1,10 @@
 import React from 'react';
 import { Container } from './styled';
+import { useSelector } from 'react-redux';
 
-const BreadCrumb = ({ breadCrumb }) => {
+const BreadCrumb = () => {
+
+    const breadCrumb = useSelector((state) => state.products);
 
     return <>  
         <Container>
