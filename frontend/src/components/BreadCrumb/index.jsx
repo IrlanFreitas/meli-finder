@@ -1,9 +1,12 @@
 import React from 'react';
 import { Container } from './styled';
+import { useSelector } from 'react-redux';
 
-const BreadCrumb = ({ breadCrumb }) => {
+const BreadCrumb = () => {
 
-    return <>  
+    const { breadCrumb } = useSelector((state) => state.products);
+
+    return <>
         <Container>
             {breadCrumb?.map(item => <p className="item" key={item.id}>{item.name}</p>)}
         </Container>

@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
 import { Container, Form, Input, Button, Icon } from "./styled"
+import { useDispatch } from "react-redux";
 import logo from "../../assets/img/logo-mercado-livre.png"
 import searchIcon from "../../assets/img/search-preto.png"
-import { Link, useHistory } from "react-router-dom"
-
-const Header = ({ setSearch }) => {
+import { useHistory } from "react-router-dom"
+import { find } from "../../store/fetchActions/products"
+import { withRouter } from 'react-router-dom'
+const Header = () => {
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
 
   const search = (event) => {
     event.preventDefault();
-    history.push("/")
-    setSearch(input);
+    history.goBack();
+    dispatch(find(input, "all"));
   }
 
   return (
     <Container>
-      <Link to="/">
-        <img width="45px" height="45px" src={logo} alt="Logo Mercado Livre" />
-      </Link>
+      <img onClick={() => { history.goBack() }} width="45px" height="45px" src={logo} alt="Logo Mercado Livre" />
       <Form onSubmit={search}>
         <Input type="text" name="textFind" placeholder="Nunca deixe de buscar" onChange={event => setInput(event.target.value)} />
         <Button type="submit" value="search">
@@ -31,4 +32,4 @@ const Header = ({ setSearch }) => {
   )
 }
 
-export default Header
+export default withRouter(Header)
