@@ -8,7 +8,7 @@ const BreadCrumb = () => {
 
     return <>
         <Container>
-            {breadCrumb?.map(item => <p className="item" key={item.id}>{item.name}</p>)}
+            {breadCrumb?.map(item => <p className="item" key={item}>{item}</p>)}
         </Container>
     </>
 
