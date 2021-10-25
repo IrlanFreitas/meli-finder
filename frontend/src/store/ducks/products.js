@@ -2,8 +2,8 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
     products: [],
-    breadCrumb: [],
     product: {},
+    breadCrumb: [],
     term: "",
     type: "",
 };
@@ -16,18 +16,18 @@ export const breadCrumbProduct = createAction('BREADCRUMB_PRODUCTS');
 
 export default createReducer(INITIAL_STATE, {
     [listProducts.type]: (state, action) => {
-        return { ...state, action: action.payload }
+        return { ...state, products: action.payload }
     },
     [termProduct.type]: (state, action) => {
-        return { ...state, action: action.payload }
+        return { ...state, term: action.payload }
     },
     [typeProduct.type]: (state, action) => {
-        return { ...state, action: action.payload }
+        return { ...state, type: action.payload }
     },
     [detailProduct.type]: (state, action) => {
-        return { ...state, action: action.payload }
+        return { ...state, product: action.payload }
     },
     [breadCrumbProduct.type]: (state, action) => {
-        return { ...state, action: action.payload }
+        return { ...state, breadCrumb: action.payload }
     }
 });

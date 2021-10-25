@@ -4,7 +4,7 @@ import Details from '../pages/Details'
 
 const Routes = () =>
     <Routers>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact  component={Home} />
         <Route path='/details/:id' exact component={Details} />
     </Routers>
 

@@ -18,9 +18,7 @@ export const getInfo = (term) => {
 		try {
 			const info = await api.get(`/items/${term}`)
 			const description = await api.get(`/items/${term}/description`)
-
-			info.description = description.plain_text
-			dispatch(detailProduct(info))
+			dispatch(detailProduct({ ...info.data, plain_text: description.data.plain_text} ))
 
 		} catch (error) {
 			console.log(error);
@@ -31,7 +29,7 @@ export const getInfo = (term) => {
 
 export const find = (term, type) => {
 	return (dispatch) => {
-		dispatch(termProduct( term ))
-		dispatch(typeProduct( type ))
+		dispatch(termProduct(term))
+		dispatch(typeProduct(type))
 	}
 }

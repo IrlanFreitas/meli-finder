@@ -1,20 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   useParams
 } from "react-router-dom";
 import * as S from "./styled";
-import useData from '../../hooks/useData';
 import BreadCrumb from "../../components/BreadCrumb";
+import { find } from "../../store/fetchActions/products"
+import useData from "../../hooks/useData";
 
 const Details = () => {
-  
+
   const { id } = useParams();
+  const dispatch = useDispatch();
+  useData();
 
-  const product = useSelector((state) => state.products);
+  const { product } = useSelector((state) => state.products);
 
+  useEffect(() => {
 
-  useData(id, "items");
+    dispatch(find(id, "detail"));
+
+  }, [dispatch, id])
 
   return <>
     <S.Container>
@@ -23,7 +29,7 @@ const Details = () => {
 
       <S.Data>
         <S.Details>
-          <S.Image src={product?.pictures[0]?.url} alt={`Descrição do produto ${product?.title}`} />
+          {product?.pictures?.length > 0 && <S.Image src={product?.pictures[0]?.url} alt={`Descrição do produto ${product?.title}`} />}
           <S.Info>
             <S.ConditionAndSold>{product?.condition} - {product?.sold_quantity} vendidos</S.ConditionAndSold>
             <S.Title>{product?.title}</S.Title>
